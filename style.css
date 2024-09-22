@@ -1,0 +1,63 @@
+/* Reset lại trang */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000;  /* Màu nền nhạt */
+}
+
+.centered-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;  /* Màu chữ (có thể tùy chỉnh) */
+    font-size: 2.5em;  /* Kích thước chữ */
+    font-family: 'Arial', sans-serif;  /* Kiểu chữ */
+    z-index: 10;  /* Hiển thị chữ trên các trái tim */
+}
+
+/* Phần chứa trái tim bay */
+.heart-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;  /* Trái tim nằm dưới chữ */
+}
+
+/* Cài đặt trái tim */
+.heart {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: url('1.png') no-repeat center center / contain;
+    animation: floatUp 10s infinite;
+    opacity: 0;
+}
+/* Hoặc thêm hiệu ứng phát sáng (thay thế cho đổ bóng) */
+.heart {
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.8));  /* Hiệu ứng phát sáng */
+}
+
+
+/* Hiệu ứng bay */
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh);  /* Vị trí ban đầu: dưới đáy màn hình */
+        opacity: 0;  /* Ẩn khi bắt đầu */
+    }
+    20% {
+        opacity: 1;  /* Hiển thị sau khi bắt đầu bay */
+    }
+    80% {
+        opacity: 1;  /* Giữ hiển thị khi đang bay */
+    }
+    100% {
+        transform: translateY(-100vh);  /* Vị trí kết thúc: trên đỉnh màn hình */
+        opacity: 0;  /* Ẩn khi bay ra ngoài màn hình */
+    }
+}
+
+
